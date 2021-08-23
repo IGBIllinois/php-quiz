@@ -14,7 +14,6 @@
 @define ('LDAP_SSL','0');
 @define ('LDAP_PORT','389');
 @define ('PASSWORD_RESET_URL','');
-@define ('DEFAULT_PAGE','exam_list');
 
 @define ('UPLOAD_DIR','uploads/');
 @define ('DEFAULT_QUESTION_POINTS',1);

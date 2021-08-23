@@ -49,10 +49,10 @@ CREATE TABLE `question_results` (
   `user_id` INT REFERENCES user(user_id),
   `question_id` INT REFERENCES question(question_id),
   `answer_id` INT REFERENCES answer(answer_id),
-  `is_correct` tinyint(1) NOT NULL,
+  `is_correct` tinyint(1) NOT NULL DEFAULT 0,
   `quiz_results_id` int(11) DEFAULT NULL,
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `question_points` int(11) NOT NULL,
+  `question_points` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY(`question_results_id`)
 );
 

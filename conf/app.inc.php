@@ -31,7 +31,7 @@ $PAGES = array(
     "user_results_questions"=>array("perm"=>"admin","path"=>"includes/user_results_questions.php")
 );
 
-
+@define ('DEFAULT_PAGE','exam_list');
 
 
 

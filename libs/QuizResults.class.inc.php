@@ -39,9 +39,9 @@ class QuizResults {
      */
     public function CreateQuizResults($userId,$quizId)
     {
-        $sql = "INSERT INTO quiz_results (quiz_id,user_id,status,correct_points, total_points)VALUES(:quiz_id,:user_id,:status,:correct_points,:total_points)";
+        $sql = "INSERT INTO quiz_results (quiz_id,user_id,status)VALUES(:quiz_id,:user_id,:status)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':quiz_id'=>$quizId,':user_id'=>$userId,':status'=>QuizResults::IN_PROGRESS,':correct_points'=>0,':total_points'=>0));
+        $query->execute(array(':quiz_id'=>$quizId,':user_id'=>$userId,':status'=>QuizResults::IN_PROGRESS));
         $quizResultsId = $this->db->LastInsertId();
 
         if($quizResultsId)
@@ -156,10 +156,15 @@ class QuizResults {
         $sql = "SELECT quiz_results_id FROM quiz_results ";
 	$sql .= "WHERE user_id=:user_id AND quiz_id=:quiz_id AND status!=:status ";
 	$sql .= "ORDER BY status DESC";
+	
         $query = $this->db->prepare($sql);
         $query->execute(array(':user_id'=>$userId,':quiz_id'=>$quizId,':status'=>QuizResults::FAILED));
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-
+	try {
+        	$result = $query->fetch(PDO::FETCH_ASSOC);
+	}
+	catch (PDOException $e) {
+		echo $e->getMessage();
+	}
         if($result)
         {
             return $result['quiz_results_id'];
