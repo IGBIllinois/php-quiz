@@ -17,6 +17,7 @@ CREATE TABLE `quiz` (
   `passing_score` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `quiz_certificate_msg` VARCHAR(255),
+  `create_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`quiz_id`)
 );
 
@@ -28,6 +29,7 @@ CREATE TABLE `question` (
   `status` int(11) NOT NULL,
   `order_num` int(11) NOT NULL,
   `points` int(11) NOT NULL,
+  `create_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`question_id`)
 );
 
@@ -38,6 +40,7 @@ CREATE TABLE `answer` (
   `question_id` INT REFERENCES question(question_id),
   `order_num` int(11) NOT NULL,
   `status` int(11) NOT NULL,
+  `create_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`answer_id`)
 );
 
