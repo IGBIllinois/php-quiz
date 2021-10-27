@@ -4,7 +4,7 @@ Stores application variables
 */
 
 define("VERSION","1.24");
-
+define("CODEWEBSITE_URL","https://github.com/IGBIllinois/php-quiz");
 /**
  * PAGES explanation
  * first element is the GET parameter to match page name to
@@ -28,7 +28,8 @@ $PAGES = array(
     "edit_question"=>array("perm"=>"admin","path"=>"includes/edit_question.php"),
     "admin"=>array("perm"=>"admin","path"=>"includes/admin.php"),
     "permission"=>array("perm"=>"admin","path"=>"includes/permission.php"),
-    "user_results_questions"=>array("perm"=>"admin","path"=>"includes/user_results_questions.php")
+    "user_results_questions"=>array("perm"=>"admin","path"=>"includes/user_results_questions.php"),
+    "about"=>array("perm"=>"admin","path"=>"includes/about.php")
 );
 
 define ('DEFAULT_PAGE','exam_list');

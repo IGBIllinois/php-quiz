@@ -32,10 +32,10 @@ if(isset($_GET['action']))
     <div class="panel-heading"><h3>User Permissions</h3></div>
     <div class="panel-body">
     <a href="index.php?p=admin"><< Back</a><br><br>
-<form action="index.php?p=permission" method="post">
+<form class='form-inline' action="index.php?p=permission" method="post">
 
     Set user:
-    <select name="admin_user">
+    <select class='form-control' name="admin_user">
         <?php
         $usersList = $user->ListUsers(User::ROLE_USER);
         foreach($usersList as $id=>$userInfo)
@@ -49,9 +49,11 @@ if(isset($_GET['action']))
 </form>
         <br>
 <table class="table">
-    <th>User Name</th>
-    <th>Role</th>
-    <th>Option</th>
+	<thead>
+		<th>User Name</th>
+		<th>Role</th>
+		<th>Option</th>
+	</thead>
     <?php
     $adminList = $user->ListUsers(User::ROLE_ADMIN);
     $modList = $user->ListUsers(User::ROLE_MODERATOR);

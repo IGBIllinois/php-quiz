@@ -2,15 +2,18 @@
 	"name": "igbillinois/php-quiz",
         "description": "PHP Quiz Software",
         "license": "GPL-3.0-only",
-
+	"repositories" : [
+	{
+        	"type": "vcs",
+	        "url": "https://www.github.com/IGBIllinois/IGBIllinois-php"
+    	}
+	],
 	"require": {
-		"phpoffice/phpexcel": "1.8.1",
 		"components/jquery": "3.3.1",
 		"components/jqueryui": "1.12.1",
 		"twbs/bootstrap": "3.4.1",
 		"fortawesome/font-awesome": "5.15.4",
-		"pear/mail_mime": "1.10.2",
-		"pear/mail": "1.4.1"
+		"igbillinois/igbillinois-php": "1.2"
 	}
 }
 

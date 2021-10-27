@@ -18,16 +18,17 @@
 <nav class="navbar navbar-default">
 	<div class='container-fluid'>
 		<div class='navbar-header'>
-	        	<a class='navbar-brand' href='#'><?php echo TITLE; ?></a>
+	        	<a class='navbar-brand' href='#'><?php echo settings::get_title(); ?></a>
 		</div>
 	<div id='navbar' class='navbar-collapse collapse'>
 	<ul class='nav navbar-nav navbar-right'>	
 
 <?php
 if($isAuthenticated) {
-	echo "<li><a href='#'>Version: " . VERSION . "</a></li>";
+	echo "<li><a href='#'>Version: " . settings::get_version() . "</a></li>";
 	if($authenticate->getAuthenticatedUser()->getUserRole()== User::ROLE_ADMIN || $authenticate->getAuthenticatedUser()->getUserRole()== User::ROLE_MODERATOR)
 	{
+		echo "<li><a href='index.php?p=about'>About</a></li>";
 		echo "<li><a href='index.php?p=admin'>Admin</a></li>";
         }
 	echo "<li><a href='index.php?logout=true'>Logout</a></li>";
