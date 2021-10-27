@@ -1,4 +1,8 @@
 {
+	"name": "igbillinois/php-quiz",
+        "description": "PHP Quiz Software",
+        "license": "GPL-3.0-only",
+
 	"require": {
 		"phpoffice/phpexcel": "1.8.1",
 		"components/jquery": "3.3.1",
