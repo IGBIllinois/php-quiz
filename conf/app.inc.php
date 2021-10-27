@@ -3,7 +3,7 @@
 Stores application variables
 */
 
-@define("__VERSION__","1.24");
+define("VERSION","1.24");
 
 /**
  * PAGES explanation
@@ -31,7 +31,7 @@ $PAGES = array(
     "user_results_questions"=>array("perm"=>"admin","path"=>"includes/user_results_questions.php")
 );
 
-@define ('DEFAULT_PAGE','exam_list');
+define ('DEFAULT_PAGE','exam_list');
 
 
 

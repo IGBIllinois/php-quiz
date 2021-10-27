@@ -1,6 +1,6 @@
 # PHP Quiz
 
-[![Build Status](https://www.travis-ci.com/IGBIllinois/php-quiz.svg?branch=master)](https://www.travis-ci.com/IGBIllinois/php-quiz)
+[![Build Status](https://github.com/IGBIllinois/php-quiz/actions/workflows/main.yml/badge.svg)](https://github.com/IGBIllinois/php-quiz/actions/workflows/main.yml)
 
 * A simple PHP Quiz
 * Supports Multiple different quizes
@@ -37,25 +37,23 @@ cp conf/config.inc.php.dist conf/config.inc.php
 * Edit includes/config.inc.php to have your mysql and ldap settings
 ```
 //MySQL settings
-@define ('DB_USER','XXXXXXXXXXX');
-@define ('DB_PASSWORD','XXXXXXXXXXXX');
-@define ('DB_HOST','localhost');
-@define ('DB_NAME','phpquiz');
+define ('DB_USER','XXXXXXXXXXX');
+define ('DB_PASSWORD','XXXXXXXXXXXX');
+define ('DB_HOST','localhost');
+define ('DB_NAME','phpquiz');
 
 //LDAP Settings
-@define ('LDAP_HOST','XXX.XXX.XXX.XXX');
-@define ('LDAP_PEOPLE_DN', 'ou=people,dc=XXX,dc=XXX,dc=XXX');
-@define ('LDAP_GROUP_DN', 'ou=group,dc=XXX,dc=XXX,dc=XXX');
-@define ('LDAP_SSL','0');
-@define ('LDAP_PORT','389');
+define ('LDAP_HOST','XXX.XXX.XXX.XXX');
+define ('LDAP_PEOPLE_DN', 'ou=people,dc=XXX,dc=XXX,dc=XXX');
+define ('LDAP_GROUP_DN', 'ou=group,dc=XXX,dc=XXX,dc=XXX');
+define ('LDAP_SSL','0');
+define ('LDAP_PORT','389');
 
-@define ('DEFAULT_PAGE','exam_list');
-
-@define ('UPLOAD_DIR','uploads/');
-@define ('DEFAULT_QUESTION_POINTS',1);
-@define ('DEFAULT_PASS_SCORE',0);
-@define ('TITLE','PHP Quiz Webiste');
-@define ('EMAIL','XXXXXXXXXXXX');
+define ('UPLOAD_DIR','uploads/');
+define ('DEFAULT_QUESTION_POINTS',1);
+define ('DEFAULT_PASS_SCORE',0);
+define ('TITLE','PHP Quiz Webiste');
+define ('EMAIL','XXXXXXXXXXXX');
 ```
 * Add initial user to database
 ```

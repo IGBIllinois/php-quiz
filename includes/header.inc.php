@@ -17,19 +17,24 @@
 <body>
 <nav class="navbar navbar-default">
 	<div class='container-fluid'>
-	        <a class='navbar-brand' href='#'><?php echo TITLE; ?></a>
+		<div class='navbar-header'>
+	        	<a class='navbar-brand' href='#'><?php echo TITLE; ?></a>
+		</div>
+	<div id='navbar' class='navbar-collapse collapse'>
+	<ul class='nav navbar-nav navbar-right'>	
+
 <?php
-if($isAuthenticated)
-{
-	echo "<span class='pull-right'>Version: " . __VERSION__ . "&nbsp";
-	echo "<a class='btn btn-primary btn-sm' role='button' href='index.php?logout=true'>Logout</a>";
+if($isAuthenticated) {
+	echo "<li><a href='#'>Version: " . VERSION . "</a></li>";
 	if($authenticate->getAuthenticatedUser()->getUserRole()== User::ROLE_ADMIN || $authenticate->getAuthenticatedUser()->getUserRole()== User::ROLE_MODERATOR)
 	{
-                echo "&nbsp; <a class='btn btn-danger btn-sm' role='button' href=\"index.php?p=admin\">Admin</a>";
+		echo "<li><a href='index.php?p=admin'>Admin</a></li>";
         }
-        echo "</span>";
+	echo "<li><a href='index.php?logout=true'>Logout</a></li>";
 }
 ?>
+	</ul>
+	</div>
 	</div>
 </nav>
 

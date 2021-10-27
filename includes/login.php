@@ -28,7 +28,7 @@ foreach ($quizzesList as $selectedQuiz) {
 }
 ?>
 <div class='row'>
-<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
+<div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
 <div class='panel panel-primary'>
 	<div class='panel-heading'>
 		<h3>IGB Training Materials</h3>
@@ -40,7 +40,7 @@ foreach ($quizzesList as $selectedQuiz) {
 	</div>
 </div>
 </div>
-<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
+<div class='col-xs-12 col-sm-12 col-md-6 col-lg-6'>
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3>IGB Online Safety Exam Login</h3>
