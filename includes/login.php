@@ -27,7 +27,6 @@ foreach ($quizzesList as $selectedQuiz) {
 
 }
 ?>
-<body OnLoad="document.login.username.focus();">
 <div class='row'>
 <div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
 <div class='panel panel-primary'>
