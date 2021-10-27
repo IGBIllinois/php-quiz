@@ -18,7 +18,11 @@ $quiz_html = "";
 foreach ($quizzesList as $selectedQuiz) {
 	if ($selectedQuiz['status'] && $selectedQuiz['website'] != "") {
 		$quiz_html .= "<tr>";
-		$quiz_html .= "<td><strong>" . $selectedQuiz['quiz_text'] . "</strong></td>";
+		$quiz_html .= "<td><strong>" . $selectedQuiz['quiz_text'] . "</strong>";
+		if ($selectedQuiz['quiz_desc'] != "") {
+			$quiz_html .= "<br><small>" . $selectedQuiz['quiz_desc'] . "</small>";
+		}
+		$quiz_html .= "</td>";
 		$quiz_html .= "<td><a class='btn btn-primary' href='" . $selectedQuiz['website'] . "'>Click Here</a></td>";
 		$quiz_html .= "</tr>";
 
