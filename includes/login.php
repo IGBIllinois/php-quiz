@@ -1,6 +1,3 @@
-
-
-<br />
 <?php
 /**
  * includes/login.php
@@ -17,7 +14,7 @@ foreach($_GET as $name => $value)
 }
 
 ?>
-
+<body OnLoad="document.login.username.focus();"> 
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3>IGB Online Safety Exam Login</h3>
@@ -27,7 +24,7 @@ foreach($_GET as $name => $value)
                 <div class="form-group">
 			<label>Netid:</label>
 			<div class='input-group'>
-				<input class="form-control" type="text" name="username" value="<?php if (isset($_POST['username'])) { echo $_POST['username']; } ?>" autofocus>
+				<input class="form-control" type="text" name="username" value="<?php if (isset($_POST['username'])) { echo $_POST['username']; } ?>" autofocus tabindex='1' autocapitalize='off'>
 				<div class='input-group-addon'>
 					<span class='glyphicon glyphicon-user' aria-hidden='true'></span>
 				</div>
@@ -36,7 +33,7 @@ foreach($_GET as $name => $value)
                 <div class="form-group">
 			<label>IGB Password:</label>
 			<div class='input-group'>
-				<input class="form-control" type="password" name="password">
+				<input class="form-control" type="password" name="password" tabindex='2'>
 				<div class='input-group-addon'>
 					<span class='glyphicon glyphicon-lock' aria-hidden='true'></span>
 				</div>
