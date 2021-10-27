@@ -3,6 +3,7 @@
 $questionStatusArr = array(Question::ACTIVE=>"Active",Question::DELETED=>"Deleted");
 
 $quiz = new Quiz($sqlDataBase);
+$message = "";
 if(isset($_GET['quiz_id']))
 {
     $quiz->LoadQuiz($_GET['quiz_id']);
@@ -10,10 +11,20 @@ if(isset($_GET['quiz_id']))
 
 if(isset($_POST['update_quiz']))
 {
-    $quiz->setQuizName($_POST['quiz_name']);
-    $quiz->setQuizDescription($_POST['quiz_desc']);
-    $quiz->setQuizPassScore($_POST['pass_score']);
-    $quiz->UpdateQuiz();
+	foreach ($_POST as $var) {
+                $var = trim(rtrim($var));
+        }
+	$quiz->setQuizName($_POST['quiz_name']);
+	$quiz->setQuizDescription($_POST['quiz_desc']);
+	$quiz->setQuizPassScore($_POST['pass_score']);
+	$quiz->setWebsite($_POST['website']);
+	if ($quiz->UpdateQuiz()) {
+		$message = "<div class='alert alert-success'>Quiz Successfully updated</div>";
+	}
+	else {
+		$message = "<div class='alert alert-danger'>Error updating quiz</div>";
+	}
+	
 }
 
 if(isset($_POST['add_question']))
@@ -66,19 +77,28 @@ if(isset($_GET['action']) && isset($_GET['question_id']))
     }
     $questionToModify->UpdateQuestion();
 }
+
+if (isset($message)) {
+	echo $message;
+}
 echo "<div class=\"panel panel-primary\">";
 echo "<div class=\"panel-heading\"><h3>Edit Quiz:</h3></div>";
 echo "<div class=\"panel-body\">";
 echo "<a href=\"index.php?p=quizzes\"><< Back</a><br><br>";
 echo "<form method=\"post\" enctype=\"multipart/form-data\" action=\"index.php?p=edit_quiz&quiz_id=".$quiz->getQuizId()."\">";
 echo "<h3>Quiz Name:</h3>";
-echo "<input type='text' name=\"quiz_name\" value='" . $quiz->getQuizName() . "'><br><br>";
+echo "<input type='text' class='form-control' name=\"quiz_name\" value='" . $quiz->getQuizName() . "'><br><br>";
+echo "<h3>Quiz Material Website:</h3>";
+echo "<input type='text' class='form-control' name='website' value='" . $quiz->getWebsite() . "'><br><br>";
 echo "<h3>Quiz Description:</h3>";
-echo "<textarea name=\"quiz_desc\" rows=\"5\" cols=\"50\">".$quiz->getQuizDescription()."</textarea><br>";
-echo "Passing Score: <input type=\"text\" name=\"pass_score\" size=2 value=\"".$quiz->getQuizPassScore()."\">%<br>";
-echo "<input type=\"submit\" value=\"Update Quiz\" name=\"update_quiz\" class='btn btn-primary'><br><br>";
+echo "<textarea class='form-control'class='form-control' name=\"quiz_desc\" rows=\"5\" cols=\"50\">".$quiz->getQuizDescription()."</textarea><br>";
+echo "<h3>Passing Score:</h3>";
+echo "<div class='form-group'><div class='input-group'>";
+echo "<input class='form-control' type='text' name='pass_score' size='2' value='" . $quiz->getQuizPassScore() . "'>";
+echo "<div class='input-group-addon'><i class='fas fa-percent'></i></div></div>";
+echo "<br><input type=\"submit\" value=\"Update Quiz\" name=\"update_quiz\" class='btn btn-primary'><br><br>";
 echo "<h3>Add Question:</h3>";
-echo "<textarea name=\"question_text\" rows=\"5\" cols=\"50\"></textarea><br>";
+echo "<textarea class='form-control' name=\"question_text\" rows=\"5\" cols=\"50\"></textarea><br>";
 echo "<input type=\"submit\" value=\"Add Question\" name=\"add_question\" class='btn btn-primary'><br><br>";
 echo "</form>";
 

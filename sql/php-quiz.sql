@@ -17,6 +17,7 @@ CREATE TABLE `quiz` (
   `passing_score` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `quiz_certificate_msg` VARCHAR(255),
+  `website` VARCHAR(255) DEFAULT '',
   `create_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`quiz_id`)
 );

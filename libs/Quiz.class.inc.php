@@ -17,6 +17,7 @@ class Quiz {
     private $quizStatus;
     private $quizPassScore;
     private $certificate_msg;
+    private $website;
     private $db;
 
 
@@ -35,7 +36,7 @@ class Quiz {
      */
     public function LoadQuiz($quizId)
     {
-        $sql = "SELECT * FROM quiz WHERE quiz_id=:quiz_id";
+        $sql = "SELECT * FROM quiz WHERE quiz_id=:quiz_id LIMIT 1";
         $query = $this->db->prepare($sql);
         $query->execute(array(":quiz_id"=>$quizId));
         $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -44,23 +45,27 @@ class Quiz {
         $this->quizId = $result['quiz_id'];
         $this->quizPassScore = $result['passing_score'];
 	$this->certificate_msg = $result['quiz_certificate_msg'];
+	$this->website = $result['website'];
+	$this->quizStatus = $result['status'];
     }
 
     /**Create a new quiz in database and load it into this object
      * @param $quizName
      * @param $quizDescription
+     * @param $website
      */
-    public function CreateQuiz($quizName, $quizDescription)
+    public function CreateQuiz($quizName, $quizDescription,$website)
     {
         echo $quizName." ".$quizDescription;
-        $sql = "INSERT INTO quiz (quiz_text, quiz_desc,status,passing_score) ";
-	$sql .= "VALUES(:quiz_text, :quiz_desc,:status,:passing_score)";
-        echo $quizName." ".$quizDescription." ".Quiz::ACTIVE." ".DEFAULT_PASS_SCORE;
+        $sql = "INSERT INTO quiz (quiz_text, quiz_desc,status,passing_score,website) ";
+	$sql .= "VALUES(:quiz_text, :quiz_desc,:status,:passing_score,:website)";
         $query = $this->db->prepare($sql);
-        $query->execute(array(':quiz_text'=>$quizName, ':quiz_desc'=>$quizDescription,':status'=>Quiz::ACTIVE,':passing_score'=>DEFAULT_PASS_SCORE));
+        $query->execute(array(':quiz_text'=>$quizName, ':quiz_desc'=>$quizDescription,':status'=>Quiz::ACTIVE,':passing_score'=>DEFAULT_PASS_SCORE,':website'=>$website));
         $this->quizId = $this->db->lastInsertId();
         $this->quizName = $quizName;
         $this->quizDescription = $quizDescription;
+	$this->website = $website;
+	$this->quizStatus = Quiz::ACTIVE;
     }
 
     /**
@@ -68,16 +73,29 @@ class Quiz {
      */
     public function UpdateQuiz()
     {
-        $sql = "UPDATE quiz SET quiz_text=:quiz_text, quiz_desc=:quiz_desc, status=:status, passing_score=:passing_score, quiz_certificate_msg=:certificate_msg ";
-	$sql .= "WHERE quiz_id=:quiz_id";
-        $query = $this->db->prepare($sql);
-        $query->execute(array(':quiz_text'=>$this->quizName,
-		':quiz_desc'=>$this->quizDescription,
-		':status'=>$this->quizStatus, 
-		':quiz_id'=>$this->quizId,
-		':passing_score'=>$this->quizPassScore,
-		':certificate_msg'=>$this->certificate_msg
-		));
+        $sql = "UPDATE quiz SET quiz_text=:quiz_text, quiz_desc=:quiz_desc, status=:status, passing_score=:passing_score, quiz_certificate_msg=:certificate_msg, website=:website ";
+	$sql .= "WHERE quiz_id=:quiz_id LIMIT 1";
+	try {
+        	$query = $this->db->prepare($sql);
+	        $parameters =array(':quiz_text'=>$this->quizName,
+			':quiz_desc'=>$this->quizDescription,
+			':status'=>$this->quizStatus, 
+			':quiz_id'=>$this->quizId,
+			':passing_score'=>$this->quizPassScore,
+			':certificate_msg'=>$this->certificate_msg,
+			':website'=>$this->website
+			);
+		echo "<br>";
+		$query->execute($parameters);
+
+		if ($query->rowCount()) {
+			return true;
+		}
+	}
+	catch (PDOException $e) {
+		echo $e->getMessage();
+	}
+	return false;
     }
 
     /**Load question give question order number
@@ -264,4 +282,15 @@ class Quiz {
 
 	}
 
+	public function setWebsite($website) {
+		$this->website = $website;
+
+	}
+	public function getWebsite() {
+		if ($this->website != "") {
+			return $this->website;
+		}
+		return false;
+		
+	}
 }

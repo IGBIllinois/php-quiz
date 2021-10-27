@@ -7,7 +7,10 @@ $quiz = new Quiz($sqlDataBase);
 
 if(isset($_POST['add_quiz']))
 {
-    $quiz->CreateQuiz($_POST['quiz_name'],$_POST['quiz_desc']);
+	foreach ($_POST as $var) {
+                $var = trim(rtrim($var));
+        }
+	$quiz->CreateQuiz($_POST['quiz_name'],$_POST['quiz_desc'],$_POST['website']);
 }
 
 if(isset($_GET['quiz_action']))
@@ -34,13 +37,19 @@ if(isset($_GET['quiz_action']))
 	<div class='form-group'>
 		<label for='quiz_name' class='col-md-2 control-label'>Quiz Name</label>
 		<div class='col-md-4'>
-			<input type='text' class='form-control' name="quiz_name"><br><br>
+			<input type='text' class='form-control' name="quiz_name">
 		</div>
 	</div>
 	<div class='form-group'>
 		<label for='quiz_desc' class='col-md-2 control-label'>Quiz Description</label>
 		<div class='col-md-4'>
-    		<textarea name="quiz_desc" rows="5" cols='74'></textarea><br><br>
+    		<textarea class='form-control' name="quiz_desc" rows="5" cols='74'></textarea>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label for='website' class='col-md-2 control-label'>Quiz Material Website</label>
+		<div class='col-md-4'>
+			<input type='text' class='form-control' name='website' id='website'>
 		</div>
 	</div>
 	<div class='form-group'>

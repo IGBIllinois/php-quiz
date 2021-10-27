@@ -8,8 +8,8 @@
 <script type='text/javascript' src='vendor/components/jquery/jquery.min.js'></script>
 <script type='text/javascript' src='vendor/twbs/bootstrap/dist/js/bootstrap.min.js'></script>
 
-
 <link rel="stylesheet" type="text/css" href='vendor/twbs/bootstrap/dist/css/bootstrap.min.css'>
+<link rel="stylesheet" type="text/css" href="vendor/fortawesome/font-awesome/css/all.min.css">
 
 <title><?php echo TITLE; ?></title>
 </head>

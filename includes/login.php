@@ -12,9 +12,36 @@ foreach($_GET as $name => $value)
     	$getUrl .= $name."=".$value."&";
     }
 }
+$quiz = new Quiz($sqlDataBase);
+$quizzesList = $quiz->ListQuizzes();
+$quiz_html = "";
+foreach ($quizzesList as $selectedQuiz) {
+	if ($selectedQuiz['status'] && $selectedQuiz['website'] != "") {
+		$quiz_html .= "<tr>";
+		$quiz_html .= "<td><strong>" . $selectedQuiz['quiz_text'] . "</strong></td>";
+		$quiz_html .= "<td><a class='btn btn-primary' href='" . $selectedQuiz['website'] . "'>Click Here</a></td>";
+		$quiz_html .= "</tr>";
 
+
+	}
+
+}
 ?>
-<body OnLoad="document.login.username.focus();"> 
+<body OnLoad="document.login.username.focus();">
+<div class='row'>
+<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
+<div class='panel panel-primary'>
+	<div class='panel-heading'>
+		<h3>IGB Training Materials</h3>
+	</div>
+	<div class='panel-body'>
+		<table class='table'>
+			<?php echo $quiz_html; ?>
+		</table>
+	</div>
+</div>
+</div>
+<div class='col-xs-6 col-sm-6 col-md-6 col-lg-6'>
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3>IGB Online Safety Exam Login</h3>
@@ -26,7 +53,7 @@ foreach($_GET as $name => $value)
 			<div class='input-group'>
 				<input class="form-control" type="text" name="username" value="<?php if (isset($_POST['username'])) { echo $_POST['username']; } ?>" autofocus tabindex='1' autocapitalize='off'>
 				<div class='input-group-addon'>
-					<span class='glyphicon glyphicon-user' aria-hidden='true'></span>
+					<i class='fas fa-user'></i>
 				</div>
 			</div>
                  </div>
@@ -35,7 +62,7 @@ foreach($_GET as $name => $value)
 			<div class='input-group'>
 				<input class="form-control" type="password" name="password" tabindex='2'>
 				<div class='input-group-addon'>
-					<span class='glyphicon glyphicon-lock' aria-hidden='true'></span>
+					<i class='fas fa-lock'></i>
 				</div>
 			</div>
                 </div>
@@ -60,3 +87,5 @@ if (defined('PASSWORD_RESET_URL') && PASSWORD_RESET_URL !== "") {
 
 
 ?>
+</div>
+</row>
