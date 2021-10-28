@@ -20,22 +20,25 @@
 		<div class='navbar-header'>
 	        	<a class='navbar-brand' href='#'><?php echo settings::get_title(); ?></a>
 		</div>
-	<div id='navbar' class='navbar-collapse collapse'>
-	<ul class='nav navbar-nav navbar-right'>	
 
 <?php
 if($isAuthenticated) {
-	echo "<li><a href='#'>Version: " . settings::get_version() . "</a></li>";
+
+	echo "<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#navbarCollapse'>";
+	echo "<span class='icon-bar'></span><span class='icon-bar'></span><span class='icon-bar'></span>";
+	echo "</button>";
+	echo "<div id='navbarCollapse' class='collapse navbar-collapse'>";
+	echo "<ul class='nav navbar-nav navbar-right'>";
+	
 	if($authenticate->getAuthenticatedUser()->getUserRole()== User::ROLE_ADMIN || $authenticate->getAuthenticatedUser()->getUserRole()== User::ROLE_MODERATOR)
 	{
 		echo "<li><a href='index.php?p=about'>About</a></li>";
 		echo "<li><a href='index.php?p=admin'>Admin</a></li>";
         }
 	echo "<li><a href='index.php?logout=true'>Logout</a></li>";
+	echo "</ul></div>";	
 }
 ?>
-	</ul>
-	</div>
 	</div>
 </nav>
 
