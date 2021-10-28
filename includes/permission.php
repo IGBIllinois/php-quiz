@@ -9,14 +9,18 @@ $user = new User($sqlDataBase);
 
 if(isset($_POST['submit_admin']))
 {
-    $user->LoadUser($_POST['admin_user']);
-    $user->SetRole(User::ROLE_ADMIN);
+	if ($_POST['admin_user']) {
+		$user->LoadUser($_POST['admin_user']);
+		$user->SetRole(User::ROLE_ADMIN);
+	}
 }
 
 if(isset($_POST['submit_moderator']))
 {
-    $user->LoadUser($_POST['admin_user']);
-    $user->SetRole(User::ROLE_MODERATOR);
+	if ($_POST['admin_user']) {
+		$user->LoadUser($_POST['admin_user']);
+		$user->SetRole(User::ROLE_MODERATOR);
+	}
 }
 
 if(isset($_GET['action']))
@@ -36,6 +40,7 @@ if(isset($_GET['action']))
 
     Set user:
     <select class='form-control' name="admin_user">
+	<option value='0'></option>
         <?php
         $usersList = $user->ListUsers(User::ROLE_USER);
         foreach($usersList as $id=>$userInfo)

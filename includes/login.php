@@ -69,7 +69,7 @@ foreach ($quizzesList as $selectedQuiz) {
 				</div>
 			</div>
                 </div>
-				<input type="submit" value="Login" name="logon" alt="submit" class="btn btn-lg btn-primary" >
+				<input type="submit" value="Login" name="logon" alt="submit" class="btn btn-primary" >
 			</form>
         </div>
     </div>
@@ -82,13 +82,10 @@ if($authenticate->getLogonError())
     echo "</div>";
 }
 
-if (defined('PASSWORD_RESET_URL') && PASSWORD_RESET_URL !== "") {
+if (settings::get_password_reset_url()) {
 	echo "<div class='text-center'><a href='" . PASSWORD_RESET_URL . "'>Reset Password</a></div>";
-	echo "<hr>";
 
 }
-
-
 ?>
 </div>
-</row>
+</div>

@@ -102,10 +102,10 @@ echo "<b>Question:</b><br />";
 <form method="post" enctype="multipart/form-data" action="index.php?p=edit_question&question_id=<?php echo $question->getQuestionId(); ?>">
 <?php
 //Show question text
-echo "<textarea rows=\"5\" cols=\"50\" style=\"font-size:14px; color:black;  border:1px solid black; background-color:#dbeaf5;\" name=\"question_text\">".$question->getQuestionText()."</textarea><br>";
+echo "<textarea class='form-control' rows=\"5\" cols=\"50\" name=\"question_text\">".$question->getQuestionText()."</textarea><br>";
 echo "Question Order Number: ";
 //Set question order in the list of question for the quiz
-echo "<select name=\"question_order\">";
+echo "<select class='form-control' name=\"question_order\">";
 
 $questionsCount = $quiz->QuestionCount();
 for($order=0; $order<=$questionsCount; $order++)
@@ -113,24 +113,24 @@ for($order=0; $order<=$questionsCount; $order++)
     echo "<option value=".$order;
     if($order == $question->getQuestionOrder())
     {
-        echo " selected";
+        echo " selected='selected'";
     }
     echo ">".$order."</option>";
 }
 echo "</select><br>";
 //Set the number of points this question is worth
 echo "Question Points: ";
-echo "<input type=\"text\" name=\"question_points\" value=\"".$question->getQuestionPoints()."\" size=5>";
+echo "<input class='form-control' type=\"text\" name=\"question_points\" value=\"".$question->getQuestionPoints()."\" size=5>";
 
 //Add an answer
 ?>
 <br /><br>
 <b>Add Answer:</b><br>
 <?php
-echo "<textarea rows=\"5\" cols=\"50\" style=\"font-size:14px; color:black;  border:1px solid black; background-color:#dbeaf5;\" name=\"answer_text\">".$answerText."</textarea>";
+echo "<textarea class='form-control' rows=\"5\" cols=\"50\" name=\"answer_text\">".$answerText."</textarea>";
 echo "<input type=\"hidden\" value=".$answer->getAnswerId()." name=\"edit_answer_id\"><br>";
 echo "Answer Order Number: ";
-echo "<select name=\"answer_order\">";
+echo "<select class='form-control' name=\"answer_order\">";
 
 $answersCount = $question->GetAnswersCount();
 for($order=0; $order<=$answersCount; $order++)
@@ -158,7 +158,7 @@ echo "</select>";
 
 //List answer choices
 ?>
-<br><br><br>
+<hr>
 <b>Answer Choices:</b><br>
 <table class="table">
   <thead>
