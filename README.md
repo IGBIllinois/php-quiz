@@ -5,6 +5,7 @@
 * A simple PHP Quiz
 * Supports Multiple different quizes
 * MySQL backend with LDAP for authentication
+* Manual located at [docs/manual.md](docs/manual.md)
 
 ## Prerequisites
 * PHP
@@ -67,3 +68,5 @@ composer install
 ```
 chown apache.apache uploads
 ```
+
+
