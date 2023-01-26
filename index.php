@@ -16,7 +16,6 @@ if(isset($_GET['p']))
 }
 
 //Setup ldap authentication classes
-//$ldapAuth = new LdapAuth(LDAP_HOST,LDAP_PEOPLE_DN,LDAP_GROUP_DN,LDAP_BASE_DN,LDAP_SSL,LDAP_PORT);
 $ldap = new \IGBIllinois\ldap(settings::get_ldap_host(),
 			settings::get_ldap_base_dn(),
 			settings::get_ldap_port(),

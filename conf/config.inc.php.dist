@@ -10,8 +10,6 @@ define('MYSQL_SSL',false);
 //LDAP Settings
 define('LDAP_HOST','XXX.XXX.XXX.XXX');
 define('LDAP_BASE_DN', 'dc=XXX,dc=XXX,dc=XXX');
-define('LDAP_PEOPLE_DN', 'ou=people,dc=XXX,dc=XXX,dc=XXX');
-define('LDAP_GROUP_DN', 'ou=group,dc=XXX,dc=XXX,dc=XXX');
 define('LDAP_SSL',false);
 define('LDAP_TLS',false);
 define('LDAP_PORT','389');
