@@ -22,7 +22,7 @@ if (DEBUG) {
 
 }
 try{
-    $sqlDataBase = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,DB_PASSWORD);
+    $sqlDataBase = new PDO("mysql:host=".MYSQL_HOST.";dbname=".MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
 }catch(PDOException $e)
 {
     echo $e->getMessage();
