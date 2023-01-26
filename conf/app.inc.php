@@ -20,16 +20,16 @@ $PAGES = array(
     "exam_list"=>array("perm"=>"auth","path"=>"includes/quiz_list.php"),
     "exam"=>array("perm"=>"auth","path"=>"includes/quiz.php"),
     "quizzes"=>array("perm"=>"admin","path"=>"includes/quiz_list_admin.php"),
-    "results"=>array("perm"=>"admin","path"=>"includes/results.php"),
+    "results"=>array("perm"=>"mod","path"=>"includes/results.php"),
     "add_quiz"=>array("perm"=>"admin","path"=>"includes/add_quiz.php"),
     "edit_quiz"=>array("perm"=>"admin","path"=>"includes/edit_quiz.php"),
     "add_question"=>array("perm"=>"admin","path"=>"includes/add_question.php"),
-    "users_results"=>array("perm"=>"admin","path"=>"includes/users_results.php"),
+    "users_results"=>array("perm"=>"mod","path"=>"includes/users_results.php"),
     "edit_question"=>array("perm"=>"admin","path"=>"includes/edit_question.php"),
-    "admin"=>array("perm"=>"admin","path"=>"includes/admin.php"),
+    "admin"=>array("perm"=>"mod","path"=>"includes/admin.php"),
     "permission"=>array("perm"=>"admin","path"=>"includes/permission.php"),
     "user_results_questions"=>array("perm"=>"admin","path"=>"includes/user_results_questions.php"),
-    "about"=>array("perm"=>"admin","path"=>"includes/about.php")
+    "about"=>array("perm"=>"mod","path"=>"includes/about.php")
 );
 
 define ('DEFAULT_PAGE','exam_list');
