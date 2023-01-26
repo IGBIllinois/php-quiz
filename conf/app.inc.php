@@ -3,7 +3,7 @@
 Stores application variables
 */
 
-define("VERSION","1.25");
+define("VERSION","1.3.0");
 define("CODEWEBSITE_URL","https://github.com/IGBIllinois/php-quiz");
 /**
  * PAGES explanation
