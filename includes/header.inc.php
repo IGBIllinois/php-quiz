@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href='vendor/twbs/bootstrap/dist/css/bootstrap.min.css'>
 <link rel="stylesheet" type="text/css" href="vendor/fortawesome/font-awesome/css/all.min.css">
 
-<title><?php echo TITLE; ?></title>
+<title><?php echo settings::get_title(); ?></title>
 </head>
 
 <body>

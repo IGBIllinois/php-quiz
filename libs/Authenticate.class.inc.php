@@ -13,7 +13,7 @@ class Authenticate {
     private $logonError;
     private $verified;
 
-    public function __construct(PDO $db, LdapAuth $ldapAuth)
+    public function __construct(PDO $db, \IGBIllinois\ldap $ldapAuth)
     {
         $this->db = $db;
         $this->ldapAuth = $ldapAuth;
@@ -38,7 +38,7 @@ class Authenticate {
     {
         $this->logonError = "";
 
-        if ($this->ldapAuth->Authenticate ( $userName, $password, "" )) {
+        if ($this->ldapAuth->authenticate( $userName, $password)) {
             $userId = $this->authenticatedUser->Exists($userName);
             if ($userId)
             {

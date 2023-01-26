@@ -38,23 +38,29 @@ cp conf/config.inc.php.dist conf/config.inc.php
 * Edit includes/config.inc.php to have your mysql and ldap settings
 ```
 //MySQL settings
-define ('DB_USER','XXXXXXXXXXX');
-define ('DB_PASSWORD','XXXXXXXXXXXX');
-define ('DB_HOST','localhost');
-define ('DB_NAME','phpquiz');
+define('MYSQL_USER','phpquiz');
+define('MYSQL_PASSWORD','');
+define('MYSQL_HOST','localhost');
+define('MYSQL_DATABASE','phpquiz');
+define('MYSQL_SSL',false);
 
 //LDAP Settings
-define ('LDAP_HOST','XXX.XXX.XXX.XXX');
-define ('LDAP_PEOPLE_DN', 'ou=people,dc=XXX,dc=XXX,dc=XXX');
-define ('LDAP_GROUP_DN', 'ou=group,dc=XXX,dc=XXX,dc=XXX');
-define ('LDAP_SSL','0');
-define ('LDAP_PORT','389');
+define('LDAP_HOST','XXX.XXX.XXX.XXX');
+define('LDAP_BASE_DN', 'dc=XXX,dc=XXX,dc=XXX');
+define('LDAP_PEOPLE_DN', 'ou=people,dc=XXX,dc=XXX,dc=XXX');
+define('LDAP_GROUP_DN', 'ou=group,dc=XXX,dc=XXX,dc=XXX');
+define('LDAP_SSL',false);
+define('LDAP_TLS',false);
+define('LDAP_PORT','389');
+define('PASSWORD_RESET_URL','');
 
-define ('UPLOAD_DIR','uploads/');
-define ('DEFAULT_QUESTION_POINTS',1);
-define ('DEFAULT_PASS_SCORE',0);
-define ('TITLE','PHP Quiz Webiste');
-define ('EMAIL','XXXXXXXXXXXX');
+define('UPLOAD_DIR','uploads/');
+define('DEFAULT_QUESTION_POINTS',1);
+define('DEFAULT_PASS_SCORE',0);
+define('TITLE','Training Website');
+define('EMAIL','');
+
+define('DEBUG',false);
 ```
 * Add initial user to database
 ```

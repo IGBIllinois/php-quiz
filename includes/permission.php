@@ -39,16 +39,7 @@ if(isset($_GET['action']))
 <form class='form-inline' action="index.php?p=permission" method="post">
 
     Set user:
-    <select class='form-control' name="admin_user">
-	<option value='0'></option>
-        <?php
-        $usersList = $user->ListUsers(User::ROLE_USER);
-        foreach($usersList as $id=>$userInfo)
-        {
-            echo "<option value=\"".$userInfo['user_id']."\">".$userInfo['user_name']."</option>";
-        }
-        ?>
-    </select>
+	<input class='form-control' name='admin_user' type='text'>
     <input type="submit" value=" Set Admin " name="submit_admin" class="btn btn-primary">
     <input type="submit" value=" Set Moderator " name="submit_moderator" class="btn btn-primary">
 </form>

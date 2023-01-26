@@ -15,17 +15,20 @@ function class_autoload($class_name) {
 spl_autoload_register('class_autoload');
 
 
-if (DEBUG) {
+if (settings::get_debug()) {
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
 
 }
 try{
-    $sqlDataBase = new PDO("mysql:host=".MYSQL_HOST.";dbname=".MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
-}catch(PDOException $e)
-{
-    echo $e->getMessage();
+	$sqlDataBase = new PDO("mysql:host=". settings::get_mysql_host() . ";dbname=" . settings::get_mysql_database(),
+		settings::get_mysql_user(),
+		settings::get_mysql_password());
+    
+} catch(PDOException $e) {
+	echo $e->getMessage();
+
 }
 
 

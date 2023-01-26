@@ -83,7 +83,7 @@ if($authenticate->getLogonError())
 }
 
 if (settings::get_password_reset_url()) {
-	echo "<div class='text-center'><a href='" . PASSWORD_RESET_URL . "'>Reset Password</a></div>";
+	echo "<div class='text-center'><a target='_blank' href='" . settings::get_password_reset_url() . "'>Reset Password</a></div>";
 
 }
 ?>
